@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   CategoryRecord,
   MANAGEMENT_CATEGORIES,
@@ -29,9 +29,14 @@ import { BottomBarOptionFour } from './components/OptionFour/BottomBarOptionFour
 import { HeaderOptionFive } from './components/OptionFive/HeaderOptionFive';
 import { HomeOptionFive } from './components/OptionFive/HomeOptionFive';
 import { BottomBarOptionFive } from './components/OptionFive/BottomBarOptionFive';
+import { ManzilPreloader } from './components/ManzilPreloader';
 
 export default function App() {
   const scrollContainerRef = useRef<HTMLDivElement>(null);
+  const [showPreloader, setShowPreloader] = useState(true);
+  const handlePreloaderComplete = useCallback(() => {
+    setShowPreloader(false);
+  }, []);
   const [designOption, setDesignOption] = useState<DesignOption>('option5');
   const [activeIntent, setActiveIntent] = useState<MarketIntent>('all');
   const [activeTab, setActiveTab] = useState<MobileDockTab>('home');
@@ -397,6 +402,12 @@ export default function App() {
           onSelectRent={() => openListingsFor('rent')}
           onSelectBuy={() => openListingsFor('buy')}
           onSelectManage={() => navigateToTab('manage')}
+        />
+
+        {/* Animated Official Manzil Logo Preloader */}
+        <ManzilPreloader
+          isVisible={showPreloader}
+          onComplete={handlePreloaderComplete}
         />
       </div>
     </div>
