@@ -1,0 +1,6 @@
+{
+  "name": "Manzil Property Management",
+  "description": "Modern real estate and property management mobile dashboard for Manzil — managing Owners, Buildings, Tenants, Vendors, Payments, Expenses, Rent, and Buy portfolios.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
